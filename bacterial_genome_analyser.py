@@ -1,10 +1,50 @@
 """
 Bacterial Genome Analyser: bacterial_genome_analyser.py
+
+A comprehensive tool for analysing bacterial genomes from GenBank.
+Performs statistical analysis, generates visualisations, and exports results to CSV.
+
+Features:
+    - Genome sequence loading and validation
+    - Gene statistics (length, GC content, coding percentage)
+    - Strand distribution analysis
+    - GC content sliding window analysis
+    - Gene density mapping across chromosome
+    - Comprehensive visualisation suite
+    - CSV export of gene data with categorisation
+    - Detailed logging for debugging and audit trails
+
+Usage:
+    python bacterial_genome_analyser.py --genome path/to/genome.gbff [options]
+    
+    Options:
+        --genome PATH       Path to genome file (.gbff, .gb)
+        --output DIR        Custom output directory (default: auto-generated)
+        --no-display        Save plots without displaying (for batch processing)
+        --help              Show help message
+        --version           Show version information
+
+Output Structure:
+    data/processed/[genome_name]_[timestamp]/
+        ├── logs/
+        │   └── bacterial_genome_analyser_[timestamp].log
+        ├── csv/
+        │   ├── [genome]_genes.csv
+        │   ├── [genome]_strand_summary.csv
+        │   ├── [genome]_long_genes.csv
+        │   └── [genome]_genes_categorised.csv
+        └── visualisations/
+            ├── [genome]_gene_length_distribution.png
+            ├── [genome]_gc_content_sliding_window.png
+            └── [additional plots...]
+
 Author: Jared Cambridge
 Date: January 10, 2026
-Updated: February 19, 2026
-
+Updated: February 20, 2026
 Version: 1.0.1
+
+License: MIT
+Repository: https://github.com/ions0/bacterial-genome-analyser
 """
 
 import sys
