@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Data files (don't commit large genome files!)
+data/raw/*.gbff
+data/raw/*.gbff.gz
+data/raw/*.fna
+data/raw/*.fasta
+data/raw/*.fa
+data/processed/*/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs (keep structure, not files)
+*.log
+ncbi_dataset
