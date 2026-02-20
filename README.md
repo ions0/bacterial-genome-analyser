@@ -153,6 +153,13 @@ ecoli_k12_mg1655_20260210_143022/
 
 ---
 
+## Learning Journey
+
+This is my first bioinformatics project, built as a learning exercise with AI assistance (Claude AI). It represents my exploration of Python, bioinformatics, software architecture, and professional development practices. The code is functional and demonstrates what I've learned, though I will continue to improve it as my skills grow.
+
+
+---
+
 ## Genome Data
 
 Genome files are not included in this repository due to file size. The default genome used during development was the *E. coli* K-12 MG1655 complete genome, available from NCBI:
