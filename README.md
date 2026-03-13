@@ -170,6 +170,20 @@ Download in GenBank format and place in `data/raw/`.
 
 ---
 
+## Future Improvements
+
+- [x] **Progress bars** — Add `tqdm` progress bars to long-running phases like gene extraction and visualisation
+- [x] **Compressed file support** — Accept `.gz` genome files directly, since NCBI commonly distributes them in this format
+- [x] **Unit tests** — Write a pytest test suite
+- [x] **Config file support** — Allow analysis parameters (window size, step size, size bins) to be set via a YAML or TOML file instead of editing `config.py` directly
+- [x] **FASTA + GFF3 input** — Support the FASTA + GFF3 format pair, which many public datasets use instead of GenBank
+- [x] **Multi-genome batch mode** — Accept a directory of genome files and produce a comparative summary across all of them
+- [x] **Strand-separated density plots** — Extend the existing `split_genes_by_strand()` function to plot forward and reverse strand gene density separately
+- [x] **HTML report output** — Generate a self-contained HTML report with embedded interactive Plotly plots instead of static PNGs
+- [x] **Circular genome map** — Visualise genes, GC content, and strand distribution around a circular chromosome map
+
+---
+
 ## Author
 
 Jared Cambridge - January 2026
