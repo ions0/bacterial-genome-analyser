@@ -172,7 +172,7 @@ Download in GenBank format and place in `data/raw/`.
 
 ## Version History
 
-- **1.0.2** (March 11, 2026): Added compressed file support (`.gz`)
+- **1.0.2** (March 13, 2026): Added compressed file support (`.gz`)
 - **1.0.1** (February 20, 2026): Initial public release
 
 ---
@@ -193,5 +193,5 @@ Download in GenBank format and place in `data/raw/`.
 
 ## Author
 
-Jared Cambridge - January 2026
+Jared Cambridge - March 2026
 
