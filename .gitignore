@@ -18,6 +18,7 @@ data/raw/*.gbff.gz
 data/raw/*.fna
 data/raw/*.fasta
 data/raw/*.fa
+data/raw/*.gz
 data/processed/*/
 
 .vscode/

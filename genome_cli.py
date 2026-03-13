@@ -30,7 +30,7 @@ def parse_arguments():
         "--genome",
         type=str,
         required=True,
-        help="Path to genome file (.gbff, .gb)"
+        help="Path to genome file (.gbff, .gb, .gz)"
     )
 
     parser.add_argument(
@@ -72,7 +72,7 @@ def validate_arguments(args):
     if not genome_path.exists():
         raise ValueError(f"Genome file not found: {genome_path}")
 
-    valid_extensions = {".gbff", ".gb"}
+    valid_extensions = {".gbff", ".gb", ".gz"}
 
     if genome_path.suffix.lower() not in valid_extensions:
         raise ValueError(f"Invalid file extension. Expected: {valid_extensions}")
