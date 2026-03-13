@@ -37,7 +37,7 @@ RESET = "\033[0m"
 
 PHASE_1_TIPS = [
     "Check the genome file exists at the path shown above",
-    "Ensure it's a GenBank format file (.gbff or .gb)",
+    "Ensure it's a GenBank format file (.gbff, .gb or .gz)",
     "Verify the path in config.py is correct",
     "Check you have read permissions on the file"
 ]

@@ -4,6 +4,7 @@ Bacterial Genome Analyser: genome_io.py
 Genome input/output functions for loading and reading genome files.
 """
 import logging
+import gzip
 from pathlib import Path
 from typing import Any
 
@@ -47,7 +48,11 @@ def load_sequence(path: Path, seq_type: str) -> tuple[str, SeqRecord]:
         raise FileNotFoundError(f"File not found: {path}")
 
     try:
-        record = SeqIO.read(path, seq_type)
+        if path.suffix == ".gz":
+            with gzip.open(path, "rt") as handle:
+                record = SeqIO.read(handle, seq_type)
+        else:
+            record = SeqIO.read(path, seq_type)
     
     except Exception as e:
         logger.error(f"Error parsing {seq_type} from '{path}': {e}")

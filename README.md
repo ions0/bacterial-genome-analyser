@@ -8,7 +8,7 @@ Built as a self-directed learning project prior to starting a bioinformatics deg
 
 ## Features
 
-- Loads GenBank (`.gbff`, `.gb`) genome files
+- Loads GenBank (`.gbff`, `.gb`, `.gz`) genome files
 - Calculates GC content across the full genome and in sliding windows
 - Extracts and analyses all CDS (coding sequence) features
 - Reports gene size distribution, strand bias, and strand switching frequency
@@ -170,10 +170,17 @@ Download in GenBank format and place in `data/raw/`.
 
 ---
 
+## Version History
+
+- **1.0.2** (March 11, 2026): Added compressed file support (`.gz`)
+- **1.0.1** (February 20, 2026): Initial public release
+
+---
+
 ## Future Improvements
 
 - [ ] **Progress bars** — Add `tqdm` progress bars to long-running phases like gene extraction and visualisation
-- [ ] **Compressed file support** — Accept `.gz` genome files directly, since NCBI commonly distributes them in this format
+- [x] **Compressed file support** — Accept `.gz` genome files directly, since NCBI commonly distributes them in this format
 - [ ] **Unit tests** — Write a pytest test suite
 - [ ] **Config file support** — Allow analysis parameters (window size, step size, size bins) to be set via a YAML or TOML file instead of editing `config.py` directly
 - [ ] **FASTA + GFF3 input** — Support the FASTA + GFF3 format pair, which many public datasets use instead of GenBank
