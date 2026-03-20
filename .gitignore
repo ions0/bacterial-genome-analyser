@@ -34,3 +34,4 @@ Thumbs.db
 ncbi_dataset
 
 .ipynb_checkpoints/
+*.ipynb
