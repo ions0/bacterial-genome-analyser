@@ -34,6 +34,8 @@ bacterial_genome_analyser/
 ├── data/
 │   ├── raw/                       # Place genome files here
 │   └── processed/                 # Output files written here
+├── tests/                         # Unit testing
+├── conftest.py                    # pytest root marker
 ├── requirements.txt
 └── README.md
 ```
@@ -150,6 +152,7 @@ ecoli_k12_mg1655_20260210_143022/
 - Argument parsing with `argparse`
 - Logging across modules using Python's `logging` library
 - Error handling with informative user-facing messages
+- Unit testing using pytest
 
 ---
 
@@ -172,6 +175,7 @@ Download in GenBank format and place in `data/raw/`.
 
 ## Version History
 
+- **1.0.3** (March 26, 2026): Added initial unit testing implemtations 
 - **1.0.2** (March 13, 2026): Added compressed file support (`.gz`)
 - **1.0.1** (February 20, 2026): Initial public release
 
@@ -181,7 +185,8 @@ Download in GenBank format and place in `data/raw/`.
 
 - [ ] **Progress bars** — Add `tqdm` progress bars to long-running phases like gene extraction and visualisation
 - [x] **Compressed file support** — Accept `.gz` genome files directly, since NCBI commonly distributes them in this format
-- [ ] **Unit tests** — Write a pytest test suite
+- [x] **Unit tests** — Write a pytest test suite
+- [ ] **Expand test coverage** — Add mocking tests for file I/O and BioPython-dependent functions
 - [ ] **Config file support** — Allow analysis parameters (window size, step size, size bins) to be set via a YAML or TOML file instead of editing `config.py` directly
 - [ ] **FASTA + GFF3 input** — Support the FASTA + GFF3 format pair, which many public datasets use instead of GenBank
 - [ ] **Multi-genome batch mode** — Accept a directory of genome files and produce a comparative summary across all of them

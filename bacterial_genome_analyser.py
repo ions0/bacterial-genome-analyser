@@ -40,8 +40,8 @@ Output Structure:
 
 Author: Jared Cambridge
 Date: January 10, 2026
-Updated: February 20, 2026
-Version: 1.0.1
+Updated: March 26, 2026
+Version: 1.0.3
 
 License: MIT
 Repository: https://github.com/ions0/bacterial-genome-analyser
