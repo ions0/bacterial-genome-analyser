@@ -8,6 +8,8 @@ import logging
 from pathlib import Path
 from datetime import datetime
 
+import yaml
+
 # Project paths
 SCRIPT_PATH = Path(__file__).resolve().parent
 DATA_DIR = SCRIPT_PATH / "data"
@@ -34,6 +36,22 @@ FIG_SIZE = (10, 6)
 GREEN = "\033[32m"
 RED = "\033[31m"
 RESET = "\033[0m"
+
+
+# Override with config.yaml if present
+config_file = SCRIPT_PATH / "config.yaml"
+if config_file.exists():
+    with open(config_file) as f:
+        cfg = yaml.safe_load(f)
+
+    WINDOW_SIZE = cfg.get("analysis", {}).get("window_size", WINDOW_SIZE)
+    STEP_SIZE = cfg.get("analysis", {}).get("step_size", STEP_SIZE)
+    SIZE_BINS = cfg.get("analysis", {}).get("size_bins", SIZE_BINS)
+    SIZE_LABELS = cfg.get("analysis", {}).get("size_labels", SIZE_LABELS)
+
+    PLOT_DPI = cfg.get("visualisation", {}).get("dpi", PLOT_DPI)
+    FIG_SIZE = tuple(cfg.get("visualisation", {}).get("fig_size", FIG_SIZE))
+
 
 PHASE_1_TIPS = [
     "Check the genome file exists at the path shown above",
