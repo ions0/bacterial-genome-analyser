@@ -1,0 +1,18 @@
+# Bacterial Genome Analyser: config.yaml
+# YAML Configuration file for Bacterial Genome Analyser
+#
+# Contains paths and analysis parameters
+
+
+# Analysis settings
+analysis:
+  window_size: 10000
+  step_size: 5000
+  size_bins: [0, 300, 900, 2000, 4000, 10000]
+  size_labels: ["Tiny", "Small", "Medium", "Large", "Huge"]
+
+# Visualisation settings
+visualisation:
+  dpi: 300
+  fig_size: [10, 6]
+

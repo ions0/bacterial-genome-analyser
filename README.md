@@ -25,6 +25,7 @@ Built as a self-directed learning project prior to starting a bioinformatics deg
 bacterial_genome_analyser/
 ├── bacterial_genome_analyser.py   # Main entry point
 ├── config.py                      # Paths and analysis parameters
+├── config.yaml                    # YAML config file
 ├── genome_cli.py                  # Argument parsing and validation
 ├── genome_io.py                   # File loading and CSV export
 ├── genome_analysis.py             # Statistical analysis functions
@@ -153,6 +154,7 @@ ecoli_k12_mg1655_20260210_143022/
 - Logging across modules using Python's `logging` library
 - Error handling with informative user-facing messages
 - Unit testing using pytest
+- PyYAML/YAML config
 
 ---
 
@@ -175,7 +177,8 @@ Download in GenBank format and place in `data/raw/`.
 
 ## Version History
 
-- **1.0.3** (March 26, 2026): Added initial unit testing implemtations 
+- **1.0.4** (March 26, 2026): Added YAML support
+- **1.0.3** (March 26, 2026): Added initial unit testing implementations 
 - **1.0.2** (March 13, 2026): Added compressed file support (`.gz`)
 - **1.0.1** (February 20, 2026): Initial public release
 
@@ -187,7 +190,7 @@ Download in GenBank format and place in `data/raw/`.
 - [x] **Compressed file support** — Accept `.gz` genome files directly, since NCBI commonly distributes them in this format
 - [x] **Unit tests** — Write a pytest test suite
 - [ ] **Expand test coverage** — Add mocking tests for file I/O and BioPython-dependent functions
-- [ ] **Config file support** — Allow analysis parameters (window size, step size, size bins) to be set via a YAML or TOML file instead of editing `config.py` directly
+- [x] **Config file support** — Allow analysis parameters (window size, step size, size bins) to be set via a YAML or TOML file instead of editing `config.py` directly
 - [ ] **FASTA + GFF3 input** — Support the FASTA + GFF3 format pair, which many public datasets use instead of GenBank
 - [ ] **Multi-genome batch mode** — Accept a directory of genome files and produce a comparative summary across all of them
 - [ ] **Strand-separated density plots** — Extend the existing `split_genes_by_strand()` function to plot forward and reverse strand gene density separately
