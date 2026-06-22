@@ -177,6 +177,7 @@ Download in GenBank format and place in `data/raw/`.
 
 ## Version History
 
+- **1.0.5** (June 22, 2026): Added tqdm progress bar support
 - **1.0.4** (March 26, 2026): Added YAML support
 - **1.0.3** (March 26, 2026): Added initial unit testing implementations 
 - **1.0.2** (March 13, 2026): Added compressed file support (`.gz`)
@@ -186,7 +187,7 @@ Download in GenBank format and place in `data/raw/`.
 
 ## Future Improvements
 
-- [ ] **Progress bars** — Add `tqdm` progress bars to long-running phases like gene extraction and visualisation
+- [x] **Progress bars** — Add `tqdm` progress bars to long-running phases like gene extraction and visualisation
 - [x] **Compressed file support** — Accept `.gz` genome files directly, since NCBI commonly distributes them in this format
 - [x] **Unit tests** — Write a pytest test suite
 - [ ] **Expand test coverage** — Add mocking tests for file I/O and BioPython-dependent functions
@@ -201,5 +202,5 @@ Download in GenBank format and place in `data/raw/`.
 
 ## Author
 
-Jared Cambridge - March 2026
+Jared Cambridge - June 2026
 

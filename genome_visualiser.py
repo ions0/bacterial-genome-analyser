@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from tqdm import tqdm
 
 import config
 from genome_analysis import (
@@ -412,12 +413,15 @@ def generate_all_visualisations(
     # Gene length plots
     print("\nGenerating gene length visualisations...")
     forward_df, reverse_df = split_genes_by_strand(gene_df)
-    plot_gene_length_histogram(gene_df, genome_name, figsize=config.FIG_SIZE)
-    save_plot(f"{genome_name}_gene_length_distribution.png", vis_dir, display=display_plots)
-    plot_gene_length_by_strand(forward_df, reverse_df, genome_name)
-    save_plot(f"{genome_name}_gene_length_by_strand.png", vis_dir, display=display_plots)
-    plot_gene_length_boxplot(gene_df, genome_name)
-    save_plot(f"{genome_name}_gene_length_boxplot.png", vis_dir, display=display_plots)
+
+    plot_tasks = [
+        (lambda: plot_gene_length_histogram(gene_df, genome_name, figsize=config.FIG_SIZE)
+            , f"{genome_name}_gene_length_distribution.png"),
+        (lambda: plot_gene_length_by_strand(forward_df, reverse_df, genome_name), 
+            f"{genome_name}_gene_length_by_strand.png"),
+        (lambda: plot_gene_length_boxplot(gene_df, genome_name), 
+            f"{genome_name}_gene_length_boxplot.png"),
+    ]
     
     # GC content plots
     print("\nGenerating GC content visualisations...")
@@ -426,22 +430,30 @@ def generate_all_visualisations(
     gc_std = np.std(gc_values)
     threshold_high = gc_mean + 2 * gc_std
     threshold_low = gc_mean - 2 * gc_std
-    
-    plot_gc_content_sliding_window(positions, gc_values, genome_name)
-    save_plot(f"{genome_name}_gc_content_sliding_window.png", vis_dir, display=display_plots)
-    plot_gc_distribution(gc_values, gc_mean, gc_std, positions, threshold_low, threshold_high, genome_name)
-    save_plot(f"{genome_name}_gc_content_distribution.png", vis_dir, display=display_plots)
-    
+
+    plot_tasks.extend([
+        (lambda: plot_gc_content_sliding_window(positions, gc_values, genome_name), 
+            f"{genome_name}_gc_content_sliding_window.png"),
+        (lambda: plot_gc_distribution(gc_values, gc_mean, gc_std, positions, threshold_low, 
+            threshold_high, genome_name), f"{genome_name}_gc_content_distribution.png"),
+    ])
+        
     # Gene density plots
     print("\nGenerating gene density visualisations...")
     gene_positions, gene_density = calculate_gene_density(
         gene_df, len(seq), config.WINDOW_SIZE, config.STEP_SIZE)
 
-    plot_gene_density(gene_positions, gene_density, genome_name)
-    save_plot(f"{genome_name}_gene_density_across_chromosome.png", vis_dir, display=display_plots)
-    plot_gc_and_density_combined(gene_positions, gene_density, positions, gc_values, genome_name)
-    save_plot(f"{genome_name}_gc_and_gene_density_combined.png", vis_dir, display=display_plots)
-    plot_genome_summary_figure(gene_df, positions, gene_positions, gc_values, gc_mean, gene_density, genome_name)
-    save_plot(f"{genome_name}_genome_summary_figure.png", vis_dir, display=display_plots)
+    plot_tasks.extend([
+        (lambda: plot_gene_density(gene_positions, gene_density, genome_name), 
+            f"{genome_name}_gene_density_across_chromosome.png"),
+        (lambda: plot_gc_and_density_combined(gene_positions, gene_density, positions, 
+            gc_values, genome_name), f"{genome_name}_gc_and_gene_density_combined.png"),
+        (lambda: plot_genome_summary_figure(gene_df, positions, gene_positions, gc_values, 
+        gc_mean, gene_density, genome_name), f"{genome_name}_genome_summary_figure.png")
+    ])
     
-    print("\nAll visualisations complete")
+    for plot_fn, filename in tqdm(plot_tasks, desc="Generating plots", unit="plot"):
+        plot_fn()
+        save_plot(filename, vis_dir, display=display_plots)
+
+    print("\nAll visualisations complete\n")
