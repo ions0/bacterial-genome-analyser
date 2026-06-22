@@ -40,8 +40,8 @@ Output Structure:
 
 Author: Jared Cambridge
 Date: January 10, 2026
-Updated: March 26, 2026
-Version: 1.0.3
+Updated: June 22, 2026
+Version: 1.0.5
 
 License: MIT
 Repository: https://github.com/ions0/bacterial-genome-analyser
@@ -53,6 +53,7 @@ from pathlib import Path
 from datetime import datetime
 
 import pandas as pd
+from tqdm import tqdm
 from Bio import SeqIO
 
 import config
@@ -141,7 +142,7 @@ def main(genome_path=None, file_format="genbank", output_dir=None, display_plots
     try:
         cds_features = [f for f in record.features if f.type == "CDS"]
         logger.info(f"Found {len(cds_features)} CDS features")
-        gene_data = [extract_gene_info(f) for f in cds_features]
+        gene_data = [extract_gene_info(f) for f in tqdm(cds_features, desc="Extracting genes")]
         genome_stats = calculate_gene_stats(gene_data, seq)
         gene_sizes = categorise_genes_by_size(gene_data)
         print_gene_analysis_results(gene_data, genome_stats, gene_sizes, cds_features)
